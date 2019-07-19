@@ -13,4 +13,4 @@ def solution(nums, target):
             
 a = [1, 3, 5, 6, 9]
 b = 10
-c = solution(a,b)
+c = solution(a, b)
