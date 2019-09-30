@@ -18,7 +18,9 @@
 from typing import List 
 class Solution:
     def sortColors(self, nums: List[int]) -> None:
-        '''三色旗问题，最初可将其看为四类：red，white，blue和unclassified
+        '''
+        本解法的思路是沿着数组移动 curr 指针，若nums[curr] = 0，则将其与 nums[p0]互换；若 nums[curr] = 2 ，则与 nums[p2]互换
+        三色旗问题，最初可将其看为四类：red，white，blue和unclassified
            |——0——|--1---|--unclassified--|--2---|
                  |      |                |
                 red   white             blue
