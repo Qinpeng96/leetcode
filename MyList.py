@@ -6,7 +6,7 @@ from typing import List
 class LNode(object):
     #结点初始化函数, p 即模拟所存放的下一个结点的地址
     #为了方便传参, 设置 p 的默认值为 0 
-    def __init__(self, data, p=0):
+    def __init__(self, data, p=None):
         self.data = data
         self.next = p
         
@@ -102,7 +102,7 @@ class LinkList(object):
 
 if __name__ == "__main__":
     #初始化链表与数据
-    data = [1,2,3,4,5]
+    data = [1,3,2,4,5]
     l = LinkList()
     l.initList(data)            
     l.traveList()

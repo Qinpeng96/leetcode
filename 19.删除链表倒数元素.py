@@ -22,6 +22,7 @@ class Solution:
     def removeNthFromEnd(self, head: ListNode, n: int) -> ListNode:
         left = head
         right = head
+        """删除倒数第n个节点，使用双指针，间隔n，只需要一次遍历即可完成""""
         while n > 0:
             right = right.next
             n -= 1
