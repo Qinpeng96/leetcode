@@ -25,7 +25,10 @@ class Solution(object):
         res, start = 0,0
         for end in range(len(s)):
             if s[end] in record:
-                start = max(start, record[s[end]]+1)#取得相同字符的最大下标
+                start = max(start, record[s[end]]+1)#若之前已存有该字典，从之前的后一个数作为起点start
             record[s[end]] = end    #"给字典里面的key赋值value"
             res = max(res, end - start + 1)#取的最大长度
         return res
+if __name__ == "__main__":
+    solution = Solution()
+    out = solution.lengthOfLongestSubstring("pwwkwaew")

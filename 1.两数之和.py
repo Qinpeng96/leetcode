@@ -26,7 +26,8 @@ def twoSum(nums, target):
         if j is not None and i!=j:
             return [i,j]
 
-            
-a = [1, 3, 5, 6, 9]
-b = 10
-c = solution(a, b)
+if __name__ == "__main__":
+    a = [1, 3, 5, 6, 9]
+    b = 10
+    c = solution(a, b)
+    print(c)

@@ -15,10 +15,10 @@
 
 """
 # Definition for singly-linked list.
-# class ListNode(object):
-#     def __init__(self, x):
-#         self.val = x
-#         self.next = None
+class ListNode(object):
+    def __init__(self, x):
+        self.val = x
+        self.next = None
  
 class Solution(object):
     def addTwoNumbers(self, l1, l2):
@@ -28,9 +28,9 @@ class Solution(object):
         :rtype: ListNode
         """
         if self.getLength(l1) < self.getLength(l2): #保证l1永远比l2更长
-            l1, l2 = l2, l1
+            l1, l2 = l2, l1#两者交换位置
             
-        head = l1   
+        head = l1   #设置头链表为l1
         while(l2):#执行加法
             l1.val += l2.val
             l1 = l1.next
