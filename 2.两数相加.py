@@ -15,11 +15,28 @@
 
 """
 # Definition for singly-linked list.
+#定义一个链表的格式，val, next
 class ListNode(object):
     def __init__(self, x):
         self.val = x
         self.next = None
- 
+
+#生成一个链表,输入列表，生成链表
+def generateList(l:list)->ListNode:
+    prenode = ListNode(0)
+    lastnode = prenode
+    for val in l:
+        lastnode.next = ListNode(val)
+        lastnode = lastnode.next
+    return prenode.next
+
+#打印一个链表内的值
+def printList(l:ListNode):
+    while l:
+        print("%d "%(l.val), end='')
+        l = l.next
+    print('')
+
 class Solution(object):
     def addTwoNumbers(self, l1, l2):
         """
@@ -55,3 +72,12 @@ class Solution(object):
             length += 1
             l = l.next
         return length
+
+if __name__ ==  "__main__":
+    l1 = generateList([1,2,3])
+    l2 = generateList([2,3,4])
+    printList(l1)
+    printList(l2)
+    s = Solution()
+    sum = s.addTwoNumbers(l1, l2)
+    printList(sum)
