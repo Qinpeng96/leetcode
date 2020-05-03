@@ -57,3 +57,20 @@ class Solution(object):
                     res += char
         
         return res
+
+#使用字符串的形式，每行都拆分为一个字符列表，最后再将上述的所有字符列表合并输出
+class Solution(object):
+    def convert(self, s:str, n:int)-> str:
+        if n < 2: return s
+        res =  ['']*n
+        i, flag = 0, -1
+        for c in s:
+            res[i] += c
+            if i == 0 or i == n-1:  flag = -flag
+            i += flag
+        return "".join(res)
+
+if __name__ == "__main__":
+    s = Solution()
+    out = s.convert("leetcode", 3)
+    print(out)
