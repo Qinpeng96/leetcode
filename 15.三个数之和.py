@@ -43,3 +43,29 @@ def main():
     print(res)
     #res = s.threeSum([-1,1,0,2,-1,-4,])
 main()
+
+#*************************
+class Solution:
+    def threeSum(self, nums: List[int]) -> List[List[int]]: 
+        res = []
+        nums = sorted(nums)#排序
+        
+        for i in range(len(nums)-2):
+            if nums[i] > 0: break
+            if i > 0 and nums[i] == nums[i - 1]: continue#有重复的数字，跳过
+            left, right = i+1, len(nums)-1
+            while left < right:#双指针运行条件
+                three_sum = nums[i] + nums[left] + nums[right]
+                if three_sum == 0:#符合要求，由于有去重操作，所以可以直接加入列表
+                    res.append([nums[i], nums[left], nums[right]])
+                    left += 1
+                    right -= 1#在双指针循环的时候，指针移动前后数值相等，就在移动一次
+                    while left < right and nums[left] == nums[left-1]: left += 1
+                    while left < right and nums[right] == nums[right+1]: right -= 1    
+                elif three_sum < 0:
+                    left += 1
+                    while left < right and nums[left] == nums[left-1]: left += 1
+                else:
+                    right -=1
+                    while left < right and nums[right] == nums[right+1]: right -= 1
+        return res

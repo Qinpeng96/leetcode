@@ -118,3 +118,25 @@ class Solution:
 来源：力扣（LeetCode）
 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
 """
+from typing import List
+class Solution:
+    def longestCommonPrefix(self, strs: List[str]) -> str:
+        num = len(strs)
+        if num == 0:return ""
+
+        res = min(len(i) for i in strs )
+        for i in range(num-1):
+            for j in range(res):
+                if strs[i][j] == strs[i+1][j]:
+                    pass
+                else:
+                    res = min(res,j)
+                    break  
+        return strs[0][:res]      
+
+
+if __name__ == '__main__':
+    solution = Solution()
+    out = solution.longestCommonPrefix([])
+    print(out)
+            

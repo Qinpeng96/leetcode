@@ -92,3 +92,26 @@ max 函数在这里是为了防止遍历第一个字符的时候出现 [-1:0][�
 链接：https://leetcode-cn.com/problems/roman-to-integer/solution/2-xing-python-on-by-knifezhu/
 
 """
+
+class Solution:
+    def romanToInt(self, s: str) -> int:
+        dict = {'I':1, 'V':5, 'X':10, 'L':50,'C':100,'D':500,'M':1000}
+        i,res = 0,0
+        num = len(s)
+
+        while i < num-1:
+            if dict[s[i]] >=  dict[s[i+1]]:#罗马字符和数字一一对应
+                res += dict[s[i]]
+                i += 1
+            else:#两个罗马字符对应一个数字
+                res += (dict[s[i+1]] - dict[s[i]])
+                i += 2
+        if i == num:
+            return res
+        else:
+            return res+dict[s[-1]]
+
+if __name__ == '__main__':
+    solution = Solution()
+    out = solution.romanToInt("IV")
+    print(out)
