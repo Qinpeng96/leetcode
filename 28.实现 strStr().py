@@ -65,7 +65,24 @@ class Solution:
 class Solution:
     def strStr(self, haystack: str, needle: str) -> int:
         return haystack.index(needle) if needle in haystack else -1
-
+#暴力方法
+class Solution:
+    def strStr(self, haystack: str, needle: str) -> int:
+        hay_count = len(haystack)
+        p_count = len(needle)
+        if p_count == 0:
+            return 0
+        i,j = 0,0
+        while i < hay_count:
+            if haystack[i] == needle[j]:
+                j += 1
+                i += 1
+            else:
+                i -= (j-1)
+                j = 0
+            if j == p_count:
+                return i-j
+        return -1
 
 if __name__ == "__main__":
     a = Solution()
