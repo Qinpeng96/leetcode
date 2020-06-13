@@ -121,4 +121,23 @@ if __name__ == "__main__":
 来源：力扣（LeetCode）
 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
 """
-    
+class Solution:
+    def divide(self, dividend: int, divisor: int) -> int:
+        flag = 1 if (dividend >0 and divisor>0) or (dividend <0 and divisor<0) else -1 #设置flag
+        dividend = abs(dividend)#将除数和被除数取绝对值
+        divisor = abs(divisor)
+        ans = 0
+        pre_ans = 1
+        pre_divisor = divisor#保留原始的除数值
+        if dividend >= divisor:#这里其实是为了给递归做弹出的条件，如果小于则返回0
+            while dividend >= divisor:
+                dividend -= divisor #除数与被除数相减
+                divisor += divisor #除数倍增
+                ans += pre_ans #每一次的部分“商”累加
+                pre_ans += pre_ans #每一次的部分商也倍加
+        else:
+            return 0 #为了给递归留的出口
+        ans = ans + self.divide(dividend, pre_divisor) #递归
+        
+        ans = min(ans, 2**31-1) if flag == 1 else -min(ans, 2**31) #对输出结果限制
+        return ans 
