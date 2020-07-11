@@ -17,13 +17,14 @@ def QuickSort(a: List[int], left:int, right:int)->List:
         while i < j and key <= a[j]:
             j -= 1
         
-        #当从后面找到比key大的数，则交换
+        #当从前面找到比key大的数，则交换
         while i < j and key >= a[i]:
             i += 1
         #交换两者数值
         temp = a[j]
         a[j] = a[i] 
         a[i] = temp
+        print("a =%s , i = %d,j = %d"%(a,i,j))
     #经过i++,j--,直到i==j进行交换
     #将起始要确定位置的值放在他应该在的位置
 
@@ -36,7 +37,7 @@ def QuickSort(a: List[int], left:int, right:int)->List:
     return a 
 
 if __name__ == "__main__":
-    a = [3,5,4]
-    # a = [6,7,8,3,4,5,9]
+    # a = [3,5,4]
+    a = [6,7,8,3,4,5,9]
     print(a,'\n')
-    print(QuickSort(a,0,2))
+    print(QuickSort(a,0,6))
