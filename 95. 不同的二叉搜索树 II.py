@@ -2,7 +2,7 @@
 95. 不同的二叉搜索树 II
 给定一个整数 n，生成所有由 1 ... n 为节点所组成的 二叉搜索树 。
 
-
+ 
 
 示例：
 
@@ -23,18 +23,24 @@
      3     2     1      1   3      2
     /     /       \                 \
    2     1         2                 3
+ 
+
+提示：
+
+0 <= n <= 8
+
+二叉搜索树关键的性质是根节点的值大于左子树所有节点的值，小于右子树所有节点的值，且左子树和右子树也同样为二叉搜索树。
+因此在生成所有可行的二叉搜索树的时候，假设当前序列长度为 nn，如果我们枚举根节点的值为 ii，那么根据二叉搜索树的性质我们
+可以知道左子树的节点值的集合为 [1 \ldots i-1][1…i−1]，右子树的节点值的集合为 [i+1 \ldots n][i+1…n]。而左子树和右子树
+的生成相较于原问题是一个序列长度缩小的子问题，因此我们可以想到用递归的方法来解决这道题目。
 
 """
-
-from typing import List
-import functools
 # Definition for a binary tree node.
-class TreeNode:
-    def __init__(self, val=0, left=None, right=None):
-        self.val = val
-        self.left = left
-        self.right = right
-
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
 class Solution:
     def generateTrees(self, n: int) -> List[TreeNode]:
         if(n==0):
@@ -56,9 +62,3 @@ class Solution:
             return all_trees
         res=build_Trees(1,n)
         return res
-
-if __name__ == "__main__":
-  s = Solution()
-  print(s.generateTrees(1))
-
-
